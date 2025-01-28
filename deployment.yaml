@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+
+  name: access-app-deployment
+
+spec:
+
+  replicas: 2
+
+  selector:
+
+    matchLabels:
+
+      app: access-app
+
+  template:
+
+    metadata:
+
+      labels:
+
+        app: access-app
+
+    spec:
+
+      containers:
+
+      - name: access-app
+
+        image: atuljkamble/nginx
+
+        ports:
+
+        - containerPort: 80
+
+
+
+
