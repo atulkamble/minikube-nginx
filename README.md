@@ -131,6 +131,5 @@ This will expose your NGINX app on a Minikube local IP.
 Now you have successfully deployed an NGINX application on Minikube and exposed it through a Kubernetes service. You can modify the deployment and service configurations as needed.
 
 For more information, check the [Minikube documentation](https://minikube.sigs.k8s.io/docs/) and the [Kubernetes documentation](https://kubernetes.io/docs/).
-```
 
 
