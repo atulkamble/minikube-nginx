@@ -1,7 +1,6 @@
 # minikube-nginx
 Minikube Project runnning nginx container
 
-```markdown
 # Minikube-NGINX Setup
 
 This guide will walk you through running an NGINX app on a Minikube cluster. Follow the instructions below to set up the necessary Kubernetes configurations and deploy your NGINX app.
