@@ -1,5 +1,5 @@
 # minikube-nginx
-Minikube Project runnning nginx container
+Minikube NGINX Setup: Deploying and Exposing NGINX on Kubernetes
 
 # Minikube-NGINX Setup
 
