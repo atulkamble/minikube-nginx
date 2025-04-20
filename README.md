@@ -116,6 +116,15 @@ kubectl get nodes
 kubectl get services
 ```
 
+## On AKS // Expose through browser 
+```
+kubectl expose deployment access-app-deployment \
+  --name=access-app-service \
+  --type=LoadBalancer \
+  --port=80 \
+  --target-port=80
+```
+
 ### 8. Access the Service
 
 To access your NGINX app, use the following command to open the service in your default browser.
