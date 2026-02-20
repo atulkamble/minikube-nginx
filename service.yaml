@@ -8,7 +8,7 @@ metadata:
 
 spec:
 
-  type: NodePort
+  type: LoadBalancer
 
   selector:
 
@@ -21,8 +21,6 @@ spec:
     port: 80
 
     targetPort: 80
-
-    nodePort: 30001 # Optional, Minikube will auto-assign a port if not provided
 
 
 
