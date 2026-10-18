@@ -183,6 +183,11 @@ Use the assigned `EXTERNAL-IP` and Service port when reachable from your host. O
 kubectl port-forward service/myservice 8080:80
 ```
 
+```
+docker buildx build --platform linux/amd64,linux/arm64 -t docker.io/atuljkamble/nginxapp --push .
+docker.io/atuljkamble/nginxapp:latest
+
+```
 Open **http://localhost:8080** in a browser. Keep the terminal open while testing.
 
 > On Linux, `sudo minikube tunnel` is sometimes used, but it is not a universal requirement. On Windows, run `minikube tunnel` in PowerShell and approve elevation if requested.
