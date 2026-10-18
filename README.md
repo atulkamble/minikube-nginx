@@ -94,8 +94,7 @@ kubectl top pods
 
 Create **deployment.yaml**:
 
-```yaml
-apiVersion: apps/v1
+```yamlapiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mydeployment
@@ -110,10 +109,8 @@ spec:
         app: myapp
     spec:
       containers:
-        - name: nginx
-          image: nginx:stable-alpine
-          ports:
-            - containerPort: 80
+      - name: mycontainer
+        image: nginx:latest
 ```
 
 ## 8. Create LoadBalancer Service
@@ -121,6 +118,7 @@ spec:
 Create **service.yaml**:
 
 ```yaml
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -130,10 +128,10 @@ spec:
   selector:
     app: myapp
   ports:
-    - name: http
-      protocol: TCP
+    - protocol: TCP
       port: 80
       targetPort: 80
+      nodePort: 30007
 ```
 
 The Service selector must match the Pod label `app: myapp`.
