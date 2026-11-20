@@ -72,16 +72,17 @@ kubectl get pods -A
 | `kubectl cluster-info` | Show Kubernetes control-plane information |
 | `kubectl get nodes -o wide` | Inspect cluster nodes |
 
-## 6. Enable add-ons and dashboard
+## 6. Add-ons, metrics, and dashboard
+
+List available add-ons, enable the metrics server, then launch the dashboard:
 
 ```powershell
 minikube addons list
 minikube addons enable metrics-server
-minikube addons enable ingress
 minikube dashboard
 ```
 
-`minikube dashboard` launches the Kubernetes dashboard (and may keep the terminal occupied). Open a second terminal for other commands.
+The dashboard command may keep its terminal occupied. Open a second terminal for other commands.
 
 Check resource metrics after the metrics-server is ready:
 
@@ -94,7 +95,8 @@ kubectl top pods
 
 Create **deployment.yaml**:
 
-```yamlapiVersion: apps/v1
+```yaml
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mydeployment
@@ -118,7 +120,6 @@ spec:
 Create **service.yaml**:
 
 ```yaml
-
 apiVersion: v1
 kind: Service
 metadata:
@@ -183,16 +184,33 @@ Use the assigned `EXTERNAL-IP` and Service port when reachable from your host. O
 kubectl port-forward service/myservice 8080:80
 ```
 
-```
-docker buildx build --platform linux/amd64,linux/arm64 -t docker.io/atuljkamble/nginxapp --push .
-docker.io/atuljkamble/nginxapp:latest
-
-```
 Open **http://localhost:8080** in a browser. Keep the terminal open while testing.
 
 > On Linux, `sudo minikube tunnel` is sometimes used, but it is not a universal requirement. On Windows, run `minikube tunnel` in PowerShell and approve elevation if requested.
 
-## 11. Troubleshooting
+## 11. Quick command reference
+
+Use this block to check the local cluster, inspect add-ons and Kubernetes resources, and launch the dashboard or LoadBalancer tunnel:
+
+```bash
+minikube status
+minikube addons list
+minikube addons enable metrics-server
+minikube dashboard
+minikube tunnel
+minikube ip
+
+kubectl get nodes
+kubectl get pods -A
+kubectl get pods
+kubectl get services
+kubectl get svc
+kubectl get ns
+```
+
+`kubectl get services` and `kubectl get svc` are equivalent. The dashboard and tunnel commands are long-running; run them in separate terminals and leave them open while using them.
+
+## 12. Troubleshooting
 
 | Problem | Check / fix |
 |---|---|
@@ -216,7 +234,7 @@ kubectl logs deployment/mydeployment
 kubectl get events --sort-by=.metadata.creationTimestamp
 ```
 
-## 12. Cleanup
+## 13. Cleanup
 
 ```powershell
 kubectl delete -f service.yaml
@@ -230,7 +248,7 @@ To remove the entire local cluster:
 minikube delete
 ```
 
-## 13. Linux and macOS notes
+## 14. Linux and macOS notes
 
 Minikube also supports Ubuntu, RHEL-compatible Linux, and macOS. Install Minikube, kubectl, and a supported driver using their platform-specific installation instructions. With Docker installed and running, the Kubernetes lab commands remain the same:
 
